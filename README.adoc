@@ -1,0 +1,35 @@
+=== Generate Heroku-like random names (PL/pgSQL)
+
+=== Usage
+
+[source,sql]
+----
+select lib_random_name.gen(); -- 'tree-yellow-8420'
+
+select lib_random_name.gen(token_length$ => 0); -- 'cold-wildflower'
+
+select lib_random_name.gen(delimiter$ => '.'); -- 'feather.falling.7220'
+
+select lib_random_name.gen(delimiter$ => '.', token_length$ => 0); -- 'boat.withered'
+----
+
+
+=== API
+
+[source,sql]
+----
+lib_random_name.gen(
+    token_length$ int default 4,
+    delimiter$ text default '-',
+    adjectives$ text[] default array[...],
+    nouns$ text[] default array[...],
+);
+----
+
+=== Inspiration
+
+This library is greatly inspired from https://github.com/Atrox/haikunatorjs[HaikunatorJS].
+
+=== SQL Conventions
+
+Code is written https://github.com/fgribreau/sql-convention/[following standard SQL-convention].
